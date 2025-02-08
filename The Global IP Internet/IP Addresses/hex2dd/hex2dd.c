@@ -14,11 +14,11 @@ int main(int argc, char* argv[]){
         }
 
         sscanf(argv[1], "%x", &addr);
-        printf("[!] Host: 0x%x\n", addr);
+        printf("[!] host: 0x%x\n", addr);
 
         inaddr.s_addr = ntohs(addr);
         // Network is BIG-ENDIAN byte
-        printf("[!] Network: 0x%x\n", inaddr.s_addr);
+        printf("[!] network: 0x%x\n", inaddr.s_addr);
 
         if (!inet_ntop(AF_INET, &inaddr, buf, MAXBUF)){
                 printf("[!] Something went wrong\n");
