@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
         printf("[!] network: 0x%x\n", inaddr.s_addr);
 
         if (!inet_ntop(AF_INET, &inaddr, buf, MAXBUF)){
-                printf("[!] Something went wrong\n");
+                printf("[-] something went wrong\n");
                 return 1;
         }
         printf("[+] ===> %s\n", buf);
