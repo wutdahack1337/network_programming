@@ -1,22 +1,28 @@
 #include <stdio.h>
 #include <arpa/inet.h>
 
-int main(int argc, char* args[]){
-  if (argc != 2){
-    printf("./hex2dd <Network Bytes>\n");
-    return 1;
-  }
+#define MAXBUF 105
 
-  unsigned int n;
-  if (sscanf(args[1], "%x", n) == 0){
-    printf("[!] Something wrong!!!");
-    return 1;
-  } 
-  printf("[!] Got n = 0x%x\n", n);
+int main(int argc, char* argv[]){
+        struct in_addr inaddr;      /* Address in network byte order    */
+        uint16_t       addr;        /* Address in host byte order       */
+        char           buf[MAXBUF]; /* Buffer for dotted-decimal string */
 
-  char* ipBuffer[105];
-  // chuyen tu byte sang string
-  ///
-  
-  return 0;
+        if (argc != 2){
+                printf("[-] usage: %s <hex number>\n", argv[0]);
+                return 1;
+        }
+
+        sscanf(argv[1], "%x", &addr);
+        printf("[!] Got 0x%x\n", addr);
+
+        inaddr.s_addr = htons(addr);
+
+        if (!inet_ntop(AF_INET, &inaddr, buf, MAXBUF)){
+                printf("[!] Something went wrong\n");
+                return 1;
+        }
+        printf("[+] ===> %s\n", buf);
+
+        return 0;
 }
