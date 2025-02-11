@@ -37,6 +37,6 @@ int main(int argc, char* argv[]){
         /* Clean up */
         printf("\n[i] cleaning up...\n");
         freeaddrinfo(listp);
-        printf("[+] finished");
+        printf("[+] finished\n");
         return 0;
 }
