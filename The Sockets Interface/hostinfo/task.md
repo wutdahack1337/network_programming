@@ -1,0 +1,2 @@
+The ```getaddrinfo``` and ```getnameinfo``` functions subsume the functionality of ```inet_pton``` and ```inet_ntop```, respectively, and they provide a higher-level of abstraction that is indepentdent of any particular address format.
+To convince yourself how handy this is, write a version of ```hostinfo``` that uses ```inet_ntop``` instead of ```getnameinfo``` to convert each socket address to a dotted-decimal address string.
